@@ -1,11 +1,12 @@
 from sensor import Sensor
 from display import Display
 
-class CarPark():
+
+class CarPark:
     def __init__(self, location, capacity, plates=None, displays=None, sensors=None):
         self.location = location
         self.capacity = capacity
-        self.plates = plates
+        self.plates = plates or []
         self.displays = displays or []
         self.sensors = sensors or []
 
@@ -30,10 +31,17 @@ class CarPark():
         self.update_displays()
 
     def remove_car(self, plate):
-        self.plates.remove(plate)
-        self.update_displays()
+        if plate in self.plates:
+            self.plates.remove(plate)
+            self.update_displays()
+        else:
+            raise ValueError(f"Plate {plate} not found — cannot remove")
+
     @property
     def available_bays(self):
         result = self.capacity - len(self.plates)
-        return max(0, result)
+        if (result < 0):
+            return 0
+        else:
+            return result
 
