@@ -4,6 +4,7 @@ from display import Display
 
 class CarPark:
     def __init__(self, location, capacity, plates=None, displays=None, sensors=None):
+        self.log_file = None
         self.location = location
         self.capacity = capacity
         self.plates = plates or []
