@@ -10,7 +10,8 @@ class TestCarPark(unittest.TestCase):
 
     def test_log_file_created(self):
         new_carpark = CarPark("123 Example Street", 100, self.log_file)
-        self.assertTrue(Path("new_log.txt").exists())
+        self.assertTrue(new_carpark.log_file.exists())
+
 
     def tearDown(self):
         Path("new_log.txt").unlink(missing_ok=True)
