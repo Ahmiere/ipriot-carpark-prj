@@ -22,6 +22,5 @@ class TestSensor(unittest.TestCase):
         assert len(plate) == 8
 
 
-
 if __name__ == '__main__':
     unittest.main()

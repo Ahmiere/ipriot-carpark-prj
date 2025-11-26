@@ -5,8 +5,8 @@ from carpark import CarPark
 
 class TestDisplay(unittest.TestCase):
     def setUp(self):
-        self.car_park = CarPark("123 Example Street", 100)
-        self.display = Display(1, "Welcome to the car park", True)
+        self.display = Display(1, "Welcome to the car park", True, CarPark("123 Example Street", 100))
+
     def test_display_initialized_with_all_attributes(self):
         self.assertIsInstance(self.display, Display)
         self.assertEqual(self.display.id, 1)

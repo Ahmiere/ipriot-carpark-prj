@@ -36,6 +36,7 @@ class TestCarPark(unittest.TestCase):
         self.assertEqual(self.carpark.plates, [])
         self.assertEqual(self.carpark.available_bays, 100)
 
+
     def test_overfill_the_car_park(self):
         for i in range(100):
             self.carpark.add_car(f"FAKE-{i}")
