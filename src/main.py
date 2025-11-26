@@ -17,7 +17,7 @@ def main():
     display_obj = Display(1, "Welcome to Moondalup", True, car_park)
 
     car_count = 0
-
+# Used for simple loop
     while car_count < 10:
         car_count = car_count + 1
         entry_sensor.detect_vehicle()
