@@ -14,10 +14,9 @@ class CarPark:
         self.displays = displays or []
         self.sensors = sensors or []
         self.log_file = log_file if isinstance(log_file, Path) else Path(log_file)
-        # create the file if it doesn't exist:
-        self.log_file.touch(exist_ok=True)
+        self.log_file.touch(exist_ok=True)  # creates the file if it doesn't exist
         self.config_file = config_file if isinstance(config_file, Path) else Path(config_file)
-        # create the file if it doesn't exist:
+        # create the configuration file if it doesn't exist:
         self.config_file.touch(exist_ok=True)
 
     def __str__(self):
@@ -51,6 +50,22 @@ class CarPark:
             raise ValueError(f"Plate {plate} not found — cannot remove")
 
     def _log_car_activity(self, plate, action):
+        """
+            This function will open a file, and append the file to log details of the activity
+            for each car
+
+            parameters
+            ----------
+            self: An instance variable that allows this function to access other function
+            within the CarPark class.
+            plate: a 6 digit combination of letters and numbers that is unique for every car
+            action: a string that explains whether the car is leaving or entering the car park
+
+            Returns
+            -------
+            Nothing to the user interface, it only logs details regarding each car activities and
+            leaves it in a log file for the car park.
+            """
         with self.log_file.open("a") as f:
             f.write(f"{plate} {action} at {datetime.now():%Y-%m-%d %H:%M:%S}\n")
 
